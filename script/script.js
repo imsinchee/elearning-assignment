@@ -64,10 +64,16 @@ function run() {
   document.getElementById("registerNewUser").onclick = function () {
     var newPhone = document.getElementById("getNewPhone").value;
     var password = document.getElementById("getNewPassword").value;
-    var registerNew = db.ref("elearning/kie/user/" + newPhone);
-    registerNew.set(password);
-    document.getElementById("getNewPhone").value = "";
-    document.getElementById("getNewPassword").value = "";
+    if (newPhone == "") {
+      alert("Enter Phone Number");
+    } else if (password == "") {
+      alert("Enter Password");
+    } else {
+      var registerNew = db.ref("elearning/kie/user/" + newPhone);
+      registerNew.set(password);
+      document.getElementById("getNewPhone").value = "";
+      document.getElementById("getNewPassword").value = "";
+    }
   };
 
   //back to login
@@ -175,23 +181,33 @@ function run() {
       ")";
     var deadline = document.getElementById("new-assignment-deadline").value;
     var location = document.getElementById("new-assignment-location").value;
-    var data = "?" + item + ":" + deadline + ":" + location;
-    var path = "elearning/kie/" + course;
-    var updateItem = db.ref(path);
-    var previous = "";
-    updateItem
-      .once("value", function (snapshot) {
-        console.log(snapshot.val());
-        previous = snapshot.val();
-        data = previous + data;
-      })
-      .then(() => {
-        updateItem.set(data);
-        document.getElementById("new-assignment-course").value = "";
-        document.getElementById("new-assignment-item").value = "";
-        document.getElementById("new-assignment-deadline").value = "";
-        document.getElementById("new-assignment-location").value = "";
-      });
+    if (
+      course != null ||
+      item != " (Updated by " + phone + ")" ||
+      deadline != null ||
+      location != null
+    ) {
+      var data = "?" + item + ":" + deadline + ":" + location;
+      var path = "elearning/kie/" + course;
+      var updateItem = db.ref(path);
+      var previous = "";
+      updateItem
+        .once("value", function (snapshot) {
+          console.log(snapshot.val());
+          previous = snapshot.val();
+          data = previous + data;
+        })
+        .then(() => {
+          updateItem.set(data);
+          document.getElementById("new-assignment-course").value = "";
+          document.getElementById("new-assignment-item").value = "";
+          document.getElementById("new-assignment-deadline").value = "";
+          document.getElementById("new-assignment-location").value = "";
+        });
+    } else {
+      alert("Not complete");
+      return;
+    }
   };
 
   //route to main
