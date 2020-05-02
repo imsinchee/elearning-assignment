@@ -1,0 +1,172 @@
+<head>
+  <title>Assignments</title>
+  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-database.js"></script>
+  <script src="script/script.js"></script>
+  <link rel="stylesheet" href="style/style.css" />
+</head>
+
+<body onload="run()">
+  <div align="center">
+    <div id="login">
+      <br />
+      <img src="img/dont-hack-me.jpg" style="width: 200px;"/>
+      <h1>Assignments for E-Learning</h1>
+      <h2>Stay Safe</h2>
+      <br />
+      <table>
+        <tr>
+          <td>
+            <label>Phone: </label>
+          </td>
+          <td>
+            <input
+              type="number"
+              placeholder="Enter your phone number"
+              id="getUserPhone"
+              class="input"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Password: </label>
+          </td>
+          <td>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              id="getPassword"
+              class="input"
+            />
+          </td>
+        </tr>
+      </table>
+      <br />
+      <button class="button-green" id="login-user">Login</button>
+      <button class="button-red" id="register-new-user">Register</button>
+    </div>
+    <div id="addNewUser">
+      <img src="img/first-time.jpg" style="width: 300px; height: 200px;"/>
+      <h1>Add User</h1>
+      <table>
+        <tr>
+          <td>
+            <label>Phone: </label>
+          </td>
+          <td>
+            <input
+              type="number"
+              placeholder="Enter new user phone"
+              id="getNewPhone"
+              class="input"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Password </label>
+          </td>
+          <td>
+            <input
+              type="text"
+              placeholder="Enter new user password"
+              id="getNewPassword"
+              class="input"
+            />
+          </td>
+        </tr>
+      </table>
+      <button class="button-green" id="registerNewUser">Register</button>
+      <button class="button-red" id="back">Back</button>
+    </div>
+    <div id="main">
+        <h1 id="course">Select Course</h1>
+        <table>
+            <tr>
+                <td>
+                    Course: 
+                </td>
+                <td>
+                    <select id="select_course" class="input">
+                        <option value="">Select Course</option>
+                        <option value="1">Instrumentation</option>
+                        <option value="2">Power Electronics</option>
+                        <option value="3">Energy Conversion and HVT</option>
+                </td>
+            </tr>
+        </table>
+        <table id="course-table">
+            <tr>
+              <th>Item</th>
+              <th>Deadline</th>
+              <th>Location</th>
+            </tr>
+        </table>
+        <p id="debug"></p>
+        <button class="button-green" id="buttonCourse">Select</button>
+        <button class="button-red" id="buttonAdd">Add</button>
+    </div>
+    <div id="addNewItem">
+        <img src="img/more-assignment.jpg" />
+      <h1>Assignments for E-Learning</h1>
+      <br />
+      <table>
+        <tr>
+          <td>
+            <label>Course: </label>
+          </td>
+          <td>
+            <select id="new-assignment-course" class="input">
+                <option value="">Select Group</option>
+                <option value="instrumentation">Instrumentation</option>
+                <option value="power-electronics">Power Electronics</option>
+                <option value="ec-hvt">Energy Conversion and HVT</option>
+          </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Item: </label>
+            </td>
+            <td>
+                <input
+                type="text"
+                placeholder="Ex: Case Study 1"
+                id="new-assignment-item"
+                class="input"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Deadline: </label>
+            </td>
+            <td>
+                <input
+                type="date"
+                placeholder="Enter Deadline"
+                id="new-assignment-deadline"
+                class="input"
+                />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Where to find: </label>
+            </td>
+            <td>
+                <input
+                type="text"
+                placeholder="Ex: Spectrum"
+                id="new-assignment-location"
+                class="input"
+                />
+            </td>
+        </tr>
+      </table>
+      <br />
+      <button class="button-green" id="addNewAssignment">Add</button>
+      <button class="button-red" id="backToCourse">Back</button>
+    </div>
+  </div>
+</body>

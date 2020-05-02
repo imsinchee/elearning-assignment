@@ -1,0 +1,101 @@
+#login {
+  margin: 10px;
+  padding: 10px;
+  display: block;
+}
+
+#addNewUser {
+  margin: 10px;
+  padding: 10px;
+  display: block;
+}
+
+#main {
+  margin: 10px;
+  padding: 10px;
+  display: block;
+}
+
+#addNewItem {
+  margin: 10px;
+  padding: 10px;
+  display: block;
+}
+
+.button-green {
+  background-color: rgb(56, 228, 56);
+  color: white;
+  border: none;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: Helvetica;
+  font-size: 20px;
+}
+
+.button-green:hover {
+  background-color: darkgreen;
+  cursor: pointer;
+}
+
+.input {
+  width: 180px;
+  height: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.button-red {
+  background-color: red;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: Helvetica;
+  font-size: 20px;
+}
+
+.button-red:hover {
+  background-color: darkred;
+  cursor: pointer;
+}
+
+#back {
+  background-color: red;
+  color: white;
+  border: none;
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: Helvetica;
+  font-size: 20px;
+}
+
+#back:hover {
+  background-color: darkred;
+  cursor: pointer;
+}
+
+#course-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#course-table td,
+#course-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#course-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#course-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #4caf50;
+  color: white;
+}
