@@ -29,6 +29,40 @@ function run() {
   document.getElementById("addNewUser").style = "display: none";
   document.getElementById("main").style = "display: none";
   document.getElementById("addNewItem").style = "display: none";
+  document.getElementById("annoucementTab").style = "display: none";
+
+  //run annoucement
+  var getAnnoucement = db.ref("elearning/kie/announcement");
+  var pasteAnnouncement = document.getElementById("annoucement");
+  getAnnoucement.on("value", function (snapshot) {
+    pasteAnnouncement.innerHTML = snapshot.val();
+  });
+
+  //route to annoucement
+  document.getElementById("announce").onclick = function () {
+    document.getElementById("login").style = "display: none";
+    document.getElementById("addNewUser").style = "display: none";
+    document.getElementById("main").style = "display: none";
+    document.getElementById("addNewItem").style = "display: none";
+    document.getElementById("annoucementTab").style = "display: block";
+  };
+
+  //make annoucement
+  document.getElementById("makeAnnoucement").onclick = function () {
+    var text = document.getElementById("annoucementText").value;
+    if (text == "") {
+      alert("Enter something");
+      return;
+    }
+    var writeToAnnoucement = db.ref("elearning/kie/announcement");
+    writeToAnnoucement.set(text).then(() => {
+      document.getElementById("login").style = "display: block";
+      document.getElementById("addNewUser").style = "display: none";
+      document.getElementById("main").style = "display: none";
+      document.getElementById("addNewItem").style = "display: none";
+      document.getElementById("annoucementTab").style = "display: none";
+    });
+  };
 
   //route to course
   document.getElementById("login-user").onclick = function () {
@@ -181,6 +215,10 @@ function run() {
       ")";
     var deadline = document.getElementById("new-assignment-deadline").value;
     var location = document.getElementById("new-assignment-location").value;
+    if (document.getElementById("new-assignment-course").value == "") {
+      alert("Enter Item");
+      return;
+    }
     if (
       course != null ||
       item != " (Updated by " + phone + ")" ||
@@ -216,5 +254,53 @@ function run() {
     document.getElementById("addNewUser").style = "display: none";
     document.getElementById("main").style = "display: block";
     document.getElementById("addNewItem").style = "display: none";
+  };
+
+  //delete item
+  document.getElementById("toDelete").onclick = function () {
+    var item = document.getElementById("getDeleteItem").value;
+    var phoneDelete = document.getElementById("getDeletePhone").value;
+    var courseDelete = document.getElementById("selectCourseDelete").value;
+    if (courseDelete == "") {
+      alert("Please specify the course");
+      return;
+    }
+    if (phoneDelete == "") {
+      alert("Please specify the contributer phone number");
+      return;
+    }
+
+    //get data from firebase
+    var path = "elearning/kie/" + courseDelete;
+    var getAllCourse = db.ref(path);
+    var found = false;
+    var dataToFirebase = "";
+    getAllCourse
+      .once("value", function (snapshot) {
+        var data = snapshot.val().split("?");
+        var itemToDelete = item + " (Updated by " + phoneDelete + ")";
+        console.log(itemToDelete);
+        for (var i = 0; i < data.length; i++) {
+          console.log(data[i]);
+          if (data[i].includes(itemToDelete)) {
+            found = true;
+            data.splice(i, 1);
+            console.log(data);
+            dataToFirebase = data.join("?");
+            break;
+          }
+        }
+      })
+      .then(() => {
+        if (found) {
+          getAllCourse.set(dataToFirebase);
+          document.getElementById("getDeleteItem").value = "";
+          document.getElementById("getDeletePhone").value = "";
+          document.getElementById("selectCourseDelete").value = "";
+          clearTable();
+        } else {
+          alert("Check input");
+        }
+      });
   };
 }
