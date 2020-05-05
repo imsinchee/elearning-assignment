@@ -38,6 +38,22 @@
   cursor: pointer;
 }
 
+.button-green-big {
+  background-color: rgb(56, 228, 56);
+  color: white;
+  border: none;
+  width: fit-content;
+  height: 40px;
+  border-radius: 10px;
+  font-family: Helvetica;
+  font-size: 20px;
+}
+
+.button-green-big:hover {
+  background-color: darkgreen;
+  cursor: pointer;
+}
+
 .input {
   width: 180px;
   height: 30px;
@@ -98,4 +114,16 @@
   text-align: center;
   background-color: #4caf50;
   color: white;
+}
+
+#annoucement {
+  width: 80%;
+  margin: 10px;
+  padding: 10px;
+  background-color: goldenrod;
+}
+
+#announce {
+  width: 30px;
+  height: 30px;
 }
