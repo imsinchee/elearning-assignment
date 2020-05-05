@@ -7,9 +7,33 @@
 </head>
 
 <body onload="run()">
+  <script>
+    NekoType = "lucy";
+  </script>
+  <h1 id="nl">
+    <script src="https://webneko.net/n20171213.js"></script>
+    <a>Neko</a>
+  </h1>
   <div align="center">
     <div id="login">
-      <br />
+
+      <div class="slide-container">
+        <span>
+          <table>
+            <tr>
+              <td>
+                <input type="image" src="img\annoucer.png" id="announce"></input>
+              </td>
+              <td>
+                <a style="font-size: 30px;">ANNOUNCEMENT</a>
+              </td>
+            </tr>
+          </table>
+        </span>
+          <h3 id="annoucement"></h3>
+      </div>
+
+      <br>
       <img src="img/dont-hack-me.jpg" style="width: 200px;"/>
       <h1>Assignments for E-Learning</h1>
       <h2>Stay Safe</h2>
@@ -46,6 +70,21 @@
       <button class="button-green" id="login-user">Login</button>
       <button class="button-red" id="register-new-user">Register</button>
     </div>
+
+    <div id="annoucementTab">
+      <h1>Make Annoucement</h1>
+      <h3>Only One Announcement Can Be Made Once For Now, play at your own risk</h3>
+      <input
+              type="text"
+              placeholder="Come Come"
+              id="annoucementText"
+              class="input"
+            />
+            <br>
+            <br>
+      <button class="button-green-big" id="makeAnnoucement">Make Annoucement</button>
+    </div>
+
     <div id="addNewUser">
       <img src="img/first-time.jpg" style="width: 300px; height: 200px;"/>
       <h1>Add User</h1>
@@ -106,6 +145,51 @@
         <p id="debug"></p>
         <button class="button-green" id="buttonCourse">Select</button>
         <button class="button-red" id="buttonAdd">Add</button>
+        <h1>DELETE</h1>
+      <table>
+        <tr>
+          <td>
+              Course: 
+          </td>
+          <td>
+              <select id="selectCourseDelete" class="input">
+                  <option value="">Select Course</option>
+                  <option value="instrumentation">Instrumentation</option>
+                  <option value="power-electronics">Power Electronics</option>
+                  <option value="ec-hvt">Energy Conversion and HVT</option>
+          </td>
+      </tr>
+        <tr>
+          <td>
+            <label>
+              Item
+            </label>
+          </td>
+          <td>
+            <input
+              type="text"
+              placeholder="Ex: Case Study 1 (case sensitive)"
+              id="getDeleteItem"
+              class="input"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>Phone of Update:</label>
+          </td>
+          <td>
+            <input
+              type="number"
+              placeholder="Ex: 01151098378"
+              id="getDeletePhone"
+              class="input"
+            />
+          </td>
+        </tr>
+        
+      </table>
+      <button class="button-red" id="toDelete">Delete</button>
     </div>
     <div id="addNewItem">
         <img src="img/more-assignment.jpg" />
